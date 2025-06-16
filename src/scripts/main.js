@@ -17,14 +17,17 @@ for (const li of headers) {
 
 tree.addEventListener('click', function (e) {
   const target = e.target.closest('span');
+  const ul = Array.from(target.parentElement.children).filter(
+    (x) => x.tagName === 'UL',
+  )[0];
 
   if (!target) {
     return;
   }
 
-  if (target.parentElement.lastElementChild.hidden) {
-    target.parentElement.lastElementChild.hidden = false;
+  if (ul.hidden) {
+    ul.hidden = false;
   } else {
-    target.parentElement.lastElementChild.hidden = true;
+    ul.hidden = true;
   }
 });
